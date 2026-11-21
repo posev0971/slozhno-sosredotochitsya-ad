@@ -1,4 +1,13 @@
-/*
-  Переменные для вашего проекта
-  и их переопределение под различные устройства
-*/
+/* Все переменные — только здесь. Значения основной (тёмной) темы. */
+:root {
+  --font-family: "IBM Plex Mono", monospace;
+  --color-bg: #01001f;
+  --color-text: #ff0070;
+  --color-heading: #ff0070;
+  --color-accent: #ff0070;
+  --color-on-accent: #01001f;
+  --color-title: #d400ff;
+  --page-bg-image: url("../images/bg-dark.jpg");
+  --rec-display: block;
+  --space: 1rem;
+}

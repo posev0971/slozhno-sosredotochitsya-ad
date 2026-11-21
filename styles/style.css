@@ -1,5 +1,119 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/IBMPlexMono-Regular.woff") format("woff");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/IBMPlexMono-Bold.woff") format("woff");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
 
+/* Mobile first, основная тема — тёмная */
+body {
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-color: var(--color-bg);
+  background-image: var(--page-bg-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* сброс для кнопок и картинок (globals.css из шаблона не трогаем) */
+img { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+/* декоративные уголки (шапка и футер) */
+.decorated-zone { position: relative; }
+.decorated-zone::before, .decorated-zone::after {
+  content: ""; position: absolute; width: 0.75rem; height: 0.75rem;
+  border: 0 solid var(--color-text);
+}
+.decorated-zone::before { top: var(--space); right: var(--space); border-width: 1px 1px 0 0; }
+.decorated-zone::after { bottom: var(--space); left: var(--space); border-width: 0 0 1px 1px; }
+
+.title-decor { background-color: var(--color-accent); color: var(--color-on-accent); }
+.title {
+  font-size: clamp(4rem, 1rem + 22vw, 7.25rem);
+  font-weight: 700; line-height: 1;
+  color: var(--color-title);
+  text-shadow: 4px 4px 0 var(--color-accent);
+}
+.title__word { display: block; }
+
+/* шапка */
+.header {
+  display: grid; grid-template-rows: auto 1fr auto; row-gap: var(--space);
+  height: 100vh; min-height: 37.5rem; padding: var(--space);
+}
+.header__rec {
+  display: var(--rec-display); position: absolute; top: var(--space); right: calc(var(--space) + 1.25rem);
+}
+.header__rec::after {
+  content: ""; display: inline-block; width: 0.5rem; height: 0.5rem; margin-left: 0.375rem;
+  border-radius: 50%; background-color: var(--color-accent);
+}
+.header__theme-menu-list { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; margin: 1.75rem 0 0; padding: 0; list-style: none; }
+.header__theme-menu-button { padding: 0.125rem 0.5rem; border: 1px solid transparent; }
+.header__theme-menu-button:hover { border-color: var(--color-text); opacity: 0.7; }
+.header__theme-menu-button:focus-visible { outline: 0; border-bottom-color: var(--color-text); }
+.header__theme-menu-button_active, .header__theme-menu-button:disabled { border-color: var(--color-text); opacity: 1; cursor: default; }
+.header .title { align-self: end; }
+.header__subtitle { padding: 0.125rem 0.25rem; font-weight: 700; }
+
+/* секции */
+.section { display: grid; gap: 1.5rem; padding: 2.5rem var(--space); }
+.section__title { font-size: 0.875rem; font-weight: 700; color: var(--color-heading); }
+.cards { display: grid; gap: 1.5rem; align-content: start; }
+.card { display: grid; gap: 0.5rem; align-content: start; }
+.card__title { padding: 0.125rem 0.25rem; font-size: 0.875rem; font-weight: 700; }
+.card__title--light { font-weight: 400; }
+
+.link {
+  color: inherit; text-decoration: none; text-shadow: 2px 2px 0 var(--color-accent);
+  border-bottom: 1px solid transparent;
+}
+.link:hover { border-bottom-color: currentColor; }
+.link:focus-visible { outline: 0; border: 1px solid currentColor; }
+
+/* галерея */
+.gallery { display: grid; gap: 0.75rem; }
+.gallery__img { width: 100%; height: 100%; object-fit: cover; }
+
+/* футер */
+.footer { display: grid; place-items: center; height: 100vh; min-height: 37.5rem; padding: var(--space); }
+.title--footer { font-size: clamp(3.5rem, 1rem + 15vw, 6rem); text-shadow: none; }
+
+/* >768 */
+@media (min-width: 768px) {
+  .title { font-size: clamp(7.5rem, 14vw, 13.5rem); }
+  .title__word { display: inline; }
+  .header { grid-template-rows: auto 1fr auto; padding: 1.5rem 2.5rem; }
+  .header__theme-menu { justify-self: center; }
+  .header__theme-menu-list { flex-direction: row; margin-top: 0; }
+  .header .title { align-self: center; }
+  .header__subtitle { justify-self: end; width: min(100%, 36rem); }
+  .section { grid-template-columns: 1fr 2.2fr; column-gap: 2rem; padding: 3rem 2.5rem; }
+  .section--gallery { grid-template-columns: 1fr; }
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "sun sun ice" "tape books ice" "tape street street";
+  }
+  .gallery__img--sun { grid-area: sun; }
+  .gallery__img--ice { grid-area: ice; }
+  .gallery__img--tape { grid-area: tape; }
+  .gallery__img--books { grid-area: books; }
+  .gallery__img--street { grid-area: street; }
+  .title--footer { font-size: clamp(5rem, 12vw, 9rem); }
+}
+
+/* >1024 */
+@media (min-width: 1024px) {
+  .section--wide { grid-template-columns: 1fr; }
+  .cards--row { grid-template-columns: repeat(3, 1fr); column-gap: 1.5rem; }
 }
