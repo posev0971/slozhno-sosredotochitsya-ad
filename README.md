@@ -2,9 +2,9 @@
 
 Адаптивная страница с двумя цветовыми темами: тёмной («неон») и светлой («день»). Проектная работа 3 спринта.
 
-Макет: https://www.figma.com/design/qhgelUhPHUbJVf3jgZsaD7/3-спринт.-Проектная-работа
+Репозиторий: https://github.com/posev0971/slozhno-sosredotochitsya-ad
 
-Страница на GitHub Pages: (вставьте ссылку после публикации)
+Макет: https://www.figma.com/design/qhgelUhPHUbJVf3jgZsaD7/3-спринт.-Проектная-работа
 
 ## Что реализовано
 
@@ -34,3 +34,4 @@
 ## Технологии
 
 HTML5, CSS3 (grid, flex, custom properties, clamp, media queries), JavaScript.
+
